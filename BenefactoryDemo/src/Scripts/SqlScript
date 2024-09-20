@@ -1,0 +1,14 @@
+SELECT
+    rp.familyName AS name,
+    rp.givenName AS given_name,
+    rp.middleName AS middle_name,
+    rp.birthDate AS Birth,
+    pd.contactRelationship AS Relationship
+FROM
+    HPPersonGeneric AS emp
+JOIN
+    HPPersonDependant AS pd ON emp.sysId = pd.HPPersonGenericSysId
+JOIN
+    HPPersonGeneric AS rp ON pd.HPRelatedPersonSysId = rp.sysId
+WHERE
+    emp.personId = 'test';
